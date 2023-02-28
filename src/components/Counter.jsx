@@ -11,12 +11,14 @@ class Counter extends Component {
   };
 
   render() {
+    const { counter, onIncrement, onDecrement, onDelete } = this.props
     return (
       <div className=''>
         <span className={this.getBadgeClasses()}>{this.state.value}</span>
-        <button onClick={() => this.props.onIncrement(this.props.counter)} className='btn btn-secondary'>+</button>
-        <button onClick={() => this.props.onDecrement(this.props.counter)} className='btn btn-secondary'>-</button>
-        <button onClick={() => this.props.onDelete(this.props.counter.id)} className='btn btn-danger'>Delete</button>
+        {/* takes in counter from props as argument for my handle functions */}
+        <button onClick={() => onIncrement(counter)} className='btn btn-secondary'>+</button>
+        <button disabled={counter.disabled} onClick={() => onDecrement(counter)} className='btn btn-secondary'>-</button>
+        <button onClick={() => onDelete(counter)} className='btn btn-danger'>Delete</button>
       </div>
     );
   }

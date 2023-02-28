@@ -24,6 +24,25 @@ class Counters extends Component {
     this.setState({counters})
   }
 
+  handleDecrement = counter => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counter[index] = {...counter};
+    if (counter[index].value === 0 ) {
+      counter.disabled = true;
+    } else {
+      counter[index].value--;
+      counter.disabled = false;
+    }
+    this.setState({counters})
+  }
+
+  handleDelete = counter => {
+  const counters = [...this.state.counters];
+  const newCounters = counters.filter(c => c !== counter);
+  this.setState({counters: newCounters})
+  }
+
   render() {
     return (
       <div className="m-3">
@@ -34,6 +53,8 @@ class Counters extends Component {
               counter={counter}
               value={counter.value}
               onIncrement={this.handleIncrement}
+              onDecrement={this.handleDecrement}
+              onDelete={this.handleDelete}
             />
           ))}
       </div>
