@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Navbar from './Navbar'
-import Counter from './Counter';
 import Counters from './Counters';
 
 class App extends Component {
@@ -11,6 +10,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Navbar />
+        <Counters />
       </React.Fragment>
     );
   }
